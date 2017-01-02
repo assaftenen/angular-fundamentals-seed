@@ -1,3 +1,4 @@
+import { NgIf } from '@angular/common/src/directives/ng_if';
 import { NgModel } from '@angular/forms/src/directives';
 import { selector } from 'rxjs/operator/publish';
 import { Component } from '@angular/core';
@@ -9,18 +10,25 @@ import { Component } from '@angular/core';
   template: `
 
 <div class="app">
-  <button (click)="handleClick(userName.value)">
-        Get Value
-  </button>
-  <input type="text" #userName/>
-      {{name}}
-<div>`
+  
+  <input type="text" [value]="name"
+  (input)="handleInput($event.target.value);"/>
+
+      <div *ngIf ="name.length>2">
+       Searching for...  {{name}}
+      </div>
+
+<template [ngIf] ="name.length>2">
+       Searching for...  {{name}}
+      </template>
+
+</div>`
 })
 
 export class AppComponent {
-  name: string = 'Assaf'
+  name: string = ''
 
-  handleChange(value: string) {
+  handleInput(value: string) {
     this.name = value;
     console.log(value);
   }
