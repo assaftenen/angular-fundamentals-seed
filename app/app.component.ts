@@ -12,7 +12,20 @@ import { Component } from '@angular/core';
   <h3>AirLine Pasanger</h3>
     <ul>
       <li *ngFor="let passanger of pasangers;let i =index" >
-        {{i+1}} {{passanger.name}}
+      <span class="status"
+      [class.checked-in]="passanger.checkedIn"></span>
+        {{i+1}}:{{passanger.name}}
+      </li>
+    </ul>
+
+      <h3>AirLine Pasanger</h3>
+    <ul>
+      <li *ngFor="let passanger of pasangers;let i =index" >
+      <span class="status"
+        [ngClass]="{'checked-in': passanger.checkedIn,
+                  'checked-out': !passanger.checkedIn}">
+      </span>
+        {{i+1}}:{{passanger.name}}
       </li>
     </ul>
 </div>`
@@ -23,23 +36,28 @@ export class AppComponent {
     {
       name: "Assaf",
       id: 1,
-      someProparty: true
+      checkedIn: true
     },
     {
       name: "Adi",
       id: 2,
-      someProparty: true
+      checkedIn: false
     },
     {
       name: "Itamar",
       id: 3,
-      someProparty: true
+      checkedIn: false
+    },
+    {
+      name: "Mika",
+      id: 4,
+      checkedIn: true
     }
 
   ]
 
   handleInput(value: string) {
-   // this.name = value;
+    // this.name = value;
     console.log(value);
   }
   handleClick(value: string) {
@@ -49,7 +67,7 @@ export class AppComponent {
 }
 
 interface Pasanger {
-name: string;
-id: number;
-someProparty : boolean
+  name: string;
+  id: number;
+  checkedIn: boolean
 }
