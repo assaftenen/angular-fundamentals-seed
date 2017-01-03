@@ -8,32 +8,48 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   styleUrls: ['app.component.scss'],
   template: `
-
 <div class="app">
-  
-  <input type="text" [value]="name"
-  (input)="handleInput($event.target.value);"/>
-
-      <div *ngIf ="name.length>2">
-       Searching for...  {{name}}
-      </div>
-
-<template [ngIf] ="name.length>2">
-       Searching for...  {{name}}
-      </template>
-
+  <h3>AirLine Pasanger</h3>
+    <ul>
+      <li *ngFor="let passanger of pasangers;let i =index" >
+        {{i+1}} {{passanger.name}}
+      </li>
+    </ul>
 </div>`
 })
 
 export class AppComponent {
-  name: string = ''
+  pasangers: Pasanger[] = [
+    {
+      name: "Assaf",
+      id: 1,
+      someProparty: true
+    },
+    {
+      name: "Adi",
+      id: 2,
+      someProparty: true
+    },
+    {
+      name: "Itamar",
+      id: 3,
+      someProparty: true
+    }
+
+  ]
 
   handleInput(value: string) {
-    this.name = value;
+   // this.name = value;
     console.log(value);
   }
   handleClick(value: string) {
     console.log(value);
   }
 
+}
+
+interface Pasanger {
+name: string;
+id: number;
+someProparty : boolean
 }
