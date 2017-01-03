@@ -19,10 +19,14 @@ import { Component } from '@angular/core';
         <div>
         checked in date: {{ passanger.checkInDate? (passanger.checkInDate | date: 'yMMMMd' | uppercase) : "No" }}
         </div>
+        <div>
+        Children: {{passanger.children?.length || 0}}
+        </div>
       </li>
     </ul>
 </div>`
 })
+
 
 export class AppComponent {
   pasangers: Pasanger[] = [
@@ -30,25 +34,32 @@ export class AppComponent {
       name: "Assaf",
       id: 1,
       checkedIn: true,
-      checkInDate: 1490742000000
+      checkInDate: 1490742000000,
+      children: [{ name: 'Itamar', age: 2.5 }, { name: 'Mika', age: 0.8 }]
     },
     {
       name: "Adi",
       id: 2,
       checkedIn: false,
-      checkInDate: null
+      checkInDate: null,
+      children: [{ name: 'Itamar', age: 2.5 }, { name: 'Mika', age: 0.8 }]
+
     },
     {
       name: "Itamar",
       id: 3,
       checkedIn: false,
-      checkInDate: null
+      checkInDate: null,
+      children: null
     },
     {
       name: "Mika",
       id: 4,
       checkedIn: true,
-      checkInDate:1490842000000
+      checkInDate: 1490842000000,
+      children: null
+
+
     }
 
   ]
@@ -63,9 +74,17 @@ export class AppComponent {
 
 }
 
-interface Pasanger {
+interface Pasanger  {
   name: string;
   id: number;
   checkedIn: boolean,
-  checkInDate?: number
+  checkInDate: number | null,
+  children: Child[] | null
 }
+
+
+interface Child{
+  name: string,
+  age: number
+}
+
