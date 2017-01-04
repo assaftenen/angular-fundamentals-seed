@@ -1,14 +1,29 @@
-import { Component } from '@angular/core';
-
+import { Passenger } from '../../modules/passenger.interface/passenger.interface';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector:'passenger-count',
     template:`
-<div>Count component</div>
+<div>
+<h3>AirLine Pasanger</h3>
+</div>
+<div>
+Total checkedIn : {{ checkedInCount() }}/{{ items.length }}
+</div>
 
     `
 })
 
 export class PassengerCountComponent{
+@Input()
+items: Passenger[];
+
+checkedInCount(): number{
+if (!this.items.length) return;
+return this.items.filter((item:Passenger)=>item.checkedIn).length
+}
 
 }
+
+
+
