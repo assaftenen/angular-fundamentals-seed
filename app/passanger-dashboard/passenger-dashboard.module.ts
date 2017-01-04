@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { PassengerDashboardComponent } from './containers/passanger-dashboard/passenger-dashboard.component'
+import { PassengerDashboardComponent } from '../passanger-dashboard/containers/passenger-dashboard/passenger-dashboard.component'
 
 @NgModule({
 

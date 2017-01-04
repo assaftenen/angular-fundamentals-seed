@@ -1,4 +1,4 @@
-import {  Component } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
 import { Passenger  } from '../../modules/passenger.interface/passenger.interface'
 
 @Component({
@@ -8,7 +8,7 @@ import { Passenger  } from '../../modules/passenger.interface/passenger.interfac
  <div>
  <h3>AirLine Pasanger</h3>
     <ul>
-      <li *ngFor="let passanger of pasangers;let i =index" >
+      <li *ngFor="let passanger of passengers;let i =index" >
       <span class="status"
       [class.checked-in]="passanger.checkedIn"></span>
         {{ i+1 }}:{{ passanger.name }}
@@ -25,9 +25,10 @@ import { Passenger  } from '../../modules/passenger.interface/passenger.interfac
  <div>`   
 })
 
-export class PassengerDashboardComponent{
-pasangers: Passenger[] = [
-    {
+export class PassengerDashboardComponent implements OnInit{
+passengers: Passenger[];
+ngOnInit(){
+   this.passengers = [{
       name: "Assaf",
       id: 1,
       checkedIn: true,
@@ -61,4 +62,7 @@ pasangers: Passenger[] = [
 
   ]
 
+
+}
+  
 }
