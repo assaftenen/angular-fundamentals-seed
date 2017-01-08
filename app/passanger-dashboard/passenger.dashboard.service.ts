@@ -17,4 +17,16 @@ export class PassengerDashboardService{
         .map((res: Response)=>res.json())
     }
 
+    updatePassenger(passenger:Passenger):Observable<Passenger> {
+        return this.http
+        .put(`${PASSENGER_API}/${passenger.id}`, passenger)
+        .map((res: Response)=>res.json())
+    }
+
+    removePassenger(passenger:Passenger):Observable<Passenger> {
+        return this.http
+        .delete(`${PASSENGER_API}/${passenger.id}`, passenger)
+        .map((res: Response)=>res.json())
+    }
+
 }
