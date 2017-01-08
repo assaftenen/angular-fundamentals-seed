@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 <h3>AirLine Pasanger</h3>
 </div>
 <div>
-Total checkedIn : {{ checkedInCount() }}/{{ items.length }}
+Total checkedIn : {{checkedInCount()}}/{{ items?.length }}
 </div>
 
     `
@@ -19,7 +19,8 @@ export class PassengerCountComponent{
 items: Passenger[];
 
 checkedInCount(): number{
-if (!this.items.length) return;
+  
+if (!this.items) return;
 return this.items.filter((item:Passenger)=>item.checkedIn).length
 }
 
