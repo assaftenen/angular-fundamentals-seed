@@ -1,3 +1,4 @@
+import { error } from 'util';
 import { PassengerDashboardService } from './../../passenger.dashboard.service';
 import { Component, OnInit } from '@angular/core';
 import { Passenger } from '../../modules/passenger.interface/passenger.interface'
@@ -28,14 +29,14 @@ export class PassengerDashboardComponent implements OnInit {
   ngOnInit() {
     this.passengerService
       .getPassengers()
-      .then((data: Passenger[]) => this.passengers = data);
+      .subscribe((data: Passenger[]) => this.passengers = data);
 
 
   }
 
   handleRemove(event: Passenger) {
     this.passengerService.removePassenger(event)
-      .then((data: Passenger) => {
+      .subscribe((data: Passenger) => {
         this.passengers = this.passengers.filter((passenger: Passenger) => passenger.id !== event.id)
       })
     
@@ -44,7 +45,7 @@ export class PassengerDashboardComponent implements OnInit {
 
   handleEdit(event: Passenger) {
     this.passengerService.updatePassenger(event)
-      .then((data: Passenger) => {
+      .subscribe((data: Passenger) => {
         this.passengers = this.passengers.map((passenger: Passenger) => {
           if (passenger.id === event.id) {
             passenger = Object.assign({}, passenger, event);
