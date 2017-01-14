@@ -1,50 +1,32 @@
 {
   "passengers": [
     {
-      "name": "Assafיייי",
+      "name": "Assaf",
       "id": 1,
       "checkedIn": true,
       "checkInDate": 1490742000000,
-      "children": [
-        {
-          "name": "Itamar",
-          "age": 2.5
-        },
-        {
-          "name": "Mika",
-          "age": 0.8
-        }
-      ]
+      "baggage": ""
     },
     {
       "name": "Adi",
       "id": 2,
       "checkedIn": true,
       "checkInDate": 1490742000000,
-      "children": [
-        {
-          "name": "Itamar",
-          "age": 2.5
-        },
-        {
-          "name": "Mika",
-          "age": 0.8
-        }
-      ]
+      "baggage": ""
     },
     {
       "name": "Itamar",
       "id": 3,
       "checkedIn": false,
       "checkInDate": null,
-      "children": null
+      "baggage": ""
     },
     {
       "name": "Mika",
       "id": 4,
       "checkedIn": true,
       "checkInDate": 1490842000000,
-      "children": null
+      "baggage": ""
     }
   ]
 }

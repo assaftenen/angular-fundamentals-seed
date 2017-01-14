@@ -7,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
 @Component({
 selector:'passenger-viewer',
 styleUrls:['passenger-viewer.component.scss'],
-template:`<div>
-{{passenger | json}}
-
-</div>`
+template:   `<div>
+            <passenger-form
+            [detail]="passenger">
+            </passenger-form>
+            </div>`
 
 })
 

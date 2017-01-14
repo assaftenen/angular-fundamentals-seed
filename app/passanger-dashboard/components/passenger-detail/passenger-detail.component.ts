@@ -22,11 +22,6 @@ import { Component, Input, Output, EventEmitter, OnChanges} from '@angular/core'
            checked in date: 
            {{ detail.checkInDate? (detail.checkInDate | date: 'yMMMMd' | uppercase) : "No" }}
     </div>
-        <div class="children">
-        Children: {{detail.children?.length || 0}}
-        </div>
-        
-
     <button (click)="toggleEdit();">
         {{editMode? 'Done' : 'Edit'}}
     </button>
