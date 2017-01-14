@@ -28,27 +28,18 @@ template: `<form #form ="ngForm" novalidate>
             <div>
             <label>
             <input
-            type="radio"
+            type="checkbox"
             name="checkedIn"
             [ngModel]="detail?.checkedIn"
             (ngModelChange)="toggleCheckedIn($event)"
-            [value]="true">
+            >
             Yes
             </label>
             </div>
 
-<div>
-            <label>
-            <input
-            type="radio"
-            name="checkedIn"
-            [ngModel]="detail?.checkedIn"
-            (ngModelChange)="toggleCheckedIn($event)"
-            [value]="false">
-            No
-            </label>
 
-            </div>
+
+           
             <div *ngIf="form.value.checkedIn">
             Check In date:
             <input 
