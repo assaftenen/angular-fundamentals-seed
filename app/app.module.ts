@@ -25,7 +25,7 @@ const routes:Routes = [
     BrowserModule,
     CommonModule,
     FormsModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes,{useHash: true} ),
 
    //custom Module
     PassangerDashBoardModule
