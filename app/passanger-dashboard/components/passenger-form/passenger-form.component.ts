@@ -1,3 +1,5 @@
+
+import { type } from 'os';
 import { identifierName } from '@angular/compiler';
 import { Baggage } from './../../modules/baggage.interface';
 import { NgForm, NgModel } from '@angular/forms/src/directives';
@@ -35,6 +37,7 @@ template: `<form #form ="ngForm" novalidate>
             <div *ngIf="id.errors?.required && id.touched" class="error">
             Id is require!
             </div> 
+            {{id.errors | json}}
             </div>
 
             <div>
@@ -70,6 +73,9 @@ template: `<form #form ="ngForm" novalidate>
             </select>
             </div>
 
+                <button type="submit" [disabled]="form.invalid">
+                    Update Passenger
+                </button>
 
            <div> {{form.value | json}}</div>
            <div> {{form.valid | json}}</div>
