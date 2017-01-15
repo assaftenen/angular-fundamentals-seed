@@ -5,24 +5,32 @@ import { Component, OnInit } from '@angular/core';
 
 
 @Component({
-selector:'passenger-viewer',
-styleUrls:['passenger-viewer.component.scss'],
-template:   `<div>
+    selector: 'passenger-viewer',
+    styleUrls: ['passenger-viewer.component.scss'],
+    template: `<div>
             <passenger-form
-            [detail]="passenger">
+            [detail]="passenger"
+            (update)="onUpdatePassenger($event)">
             </passenger-form>
             </div>`
 
 })
 
-export class PassengerViewerComponent implements OnInit{
-    passenger:Passenger
-    constructor(private passengerService: PassengerDashboardService){
+export class PassengerViewerComponent implements OnInit {
+    passenger: Passenger
+    constructor(private passengerService: PassengerDashboardService) {
 
     }
-    ngOnInit(){
-this.passengerService
-.getPassenger(1)
-.subscribe((data:Passenger)=>this.passenger=data);
+    ngOnInit() {
+        this.passengerService
+            .getPassenger(1)
+            .subscribe((data: Passenger) => this.passenger = data);
+    }
+
+    onUpdatePassenger(event) {
+        this.passengerService
+        .updatePassenger(event)
+        .subscribe((data: Passenger)=>this.passenger = data)
+
     }
 }
