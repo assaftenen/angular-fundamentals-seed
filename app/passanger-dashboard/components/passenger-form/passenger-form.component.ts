@@ -1,3 +1,4 @@
+import { identifierName } from '@angular/compiler';
 import { Baggage } from './../../modules/baggage.interface';
 import { NgForm, NgModel } from '@angular/forms/src/directives';
 import { Passenger } from '../../modules/passenger.interface/passenger.interface';
@@ -11,19 +12,29 @@ styleUrls:['passenger-form.component.scss'],
 template: `<form #form ="ngForm" novalidate>
                 {{detail | json}}
             <div>
-            Passenger name:
-            <input 
-            type="text"
-            name="id"
-            [ngModel]="detail?.name">
+                Passenger name:
+                <input 
+                    type="text"
+                    name="fullName"
+                    required
+                    #fullName ="ngModel"
+                    [ngModel]="detail?.name">
+                    <div *ngIf="fullName.errors?.required && fullName.dirty" class="error">
+                            Passenger name is require!
+                    </div>             
             </div>
 
             <div>
             Passenger ID:
             <input 
             type="number"
-            name="fullname"
+            required
+            name="id"
+            #id="ngModel"
             [ngModel]="detail?.id">
+            <div *ngIf="id.errors?.required && id.touched" class="error">
+            Id is require!
+            </div> 
             </div>
 
             <div>
@@ -60,7 +71,9 @@ template: `<form #form ="ngForm" novalidate>
             </div>
 
 
-            {{form.value | json}}
+           <div> {{form.value | json}}</div>
+           <div> {{form.valid | json}}</div>
+           <div> {{form.invalid | json}}</div>
         </form>`
 
 })
