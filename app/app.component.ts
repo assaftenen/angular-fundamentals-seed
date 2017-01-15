@@ -3,6 +3,11 @@ import { NgModel } from '@angular/forms/src/directives';
 import { selector } from 'rxjs/operator/publish';
 import { Component, ViewEncapsulation } from '@angular/core';
 
+interface Nav{
+link:string,
+name: string,
+exact: boolean
+}
 
 @Component({
   selector: 'app-root',
@@ -12,16 +17,13 @@ import { Component, ViewEncapsulation } from '@angular/core';
 <div class="app">
 <nav class="nav">
 <a 
-routerLink="/"
+*ngFor= "let item of nav"
+[routerLink]="item.link"
 routerLinkActive="active"
-[routerLinkActiveOptions]="{ exact: true }">
-  Home
+[routerLinkActiveOptions]="{ exact: item.exact }">
+  {{item.name}}
 </a>
-<a 
-routerLink="/oops"
-routerLinkActive="active">
-  404
-</a>
+
 </nav>
   <router-outlet></router-outlet>
 </div>`
@@ -29,7 +31,26 @@ routerLinkActive="active">
 
 
 export class AppComponent {
- 
+ nav: Nav[] = [
+   
+   {
+     link:"/",
+     name:"Home",
+     exact:true
+
+   },
+   {
+     link:"/oops",
+     name:"404",
+     exact:false
+
+   },
+   {
+     link:"/passenger",
+     name:"Passenger",
+     exact:false
+
+   }]
 
 }
 
