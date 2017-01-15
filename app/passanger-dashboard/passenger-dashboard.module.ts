@@ -16,36 +16,41 @@ import { PassengerFormComponent } from './components/passenger-form/passenger-fo
 //services
 import { PassengerDashboardService } from './passenger.dashboard.service';
 
-const routes:Routes=[
-    {path:'passenger',
-     component:PassengerDashboardComponent}
-    
-]
+const routes: Routes = [
+    {
+        path: 'passenger',
+        children: [
+            { path: '', component: PassengerDashboardComponent },
+            { path: ':id',  component:PassengerViewerComponent}
+        ]
+    }
+
+];
 @NgModule({
 
-declarations:[
-    PassengerDashboardComponent,
-    PassengerCountComponent,
-    PassengerDetailComponent,
-    PassengerViewerComponent,
-    PassengerFormComponent
+    declarations: [
+        PassengerDashboardComponent,
+        PassengerCountComponent,
+        PassengerDetailComponent,
+        PassengerViewerComponent,
+        PassengerFormComponent
 
-],
-imports:[
-CommonModule,
-HttpModule,
-FormsModule,
-RouterModule.forChild(routes)
+    ],
+    imports: [
+        CommonModule,
+        HttpModule,
+        FormsModule,
+        RouterModule.forChild(routes)
 
 
-],
+    ],
 
-providers:[
-    PassengerDashboardService
-]
+    providers: [
+        PassengerDashboardService
+    ]
 
 })
 
-export class PassangerDashBoardModule{
+export class PassangerDashBoardModule {
 
 }
