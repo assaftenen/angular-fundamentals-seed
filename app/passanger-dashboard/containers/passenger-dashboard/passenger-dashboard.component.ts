@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { error } from 'util';
 import { PassengerDashboardService } from './../../passenger.dashboard.service';
 import { Component, OnInit } from '@angular/core';
@@ -15,7 +16,8 @@ import { Passenger } from '../../modules/passenger.interface/passenger.interface
       *ngFor= "let passenger of passengers;"
             [detail]="passenger"
             (remove) = "handleRemove($event);"
-            (edit) = "handleEdit($event);">
+            (edit) = "handleEdit($event);"
+            (view)="handleView($event)">
       </passenger-detail>
  <div>`
 })
@@ -23,7 +25,9 @@ import { Passenger } from '../../modules/passenger.interface/passenger.interface
 
 export class PassengerDashboardComponent implements OnInit {
   passengers: Passenger[];
-  constructor(private passengerService: PassengerDashboardService) {
+  constructor(
+    private router: Router,
+    private passengerService: PassengerDashboardService) {
 
   }
   ngOnInit() {
@@ -57,6 +61,9 @@ export class PassengerDashboardComponent implements OnInit {
 
 
 
+  }
+  handleView(event:Passenger){
+this.router.navigate(['/passenger', event.id])
   }
 
 }

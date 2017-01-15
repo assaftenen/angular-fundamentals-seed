@@ -5,7 +5,8 @@
       "id": 1,
       "checkedIn": true,
       "baggage": "none",
-      "checkInDate": 1490742000000
+      "checkInDate": 1490742000000,
+      "name": "Assaf"
     },
     {
       "name": "Adi",

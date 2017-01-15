@@ -1,3 +1,4 @@
+import { view_utils } from '@angular/compiler/src/private_import_core';
 import { Passenger } from '../../modules/passenger.interface/passenger.interface';
 import { Component, Input, Output, EventEmitter, OnChanges} from '@angular/core';
 
@@ -28,6 +29,9 @@ import { Component, Input, Output, EventEmitter, OnChanges} from '@angular/core'
     <button (click)="onRemove();">
         Remove
     </button>
+    <button (click)="goToPassenger();">
+        view
+    </button>
 
     `
 })
@@ -38,11 +42,13 @@ export class PassengerDetailComponent implements OnChanges{
  detail: Passenger;
  
 @Output()
- remove: EventEmitter<any> = new EventEmitter;
+ remove: EventEmitter<Passenger> = new EventEmitter<Passenger>();
  
 @Output()
- edit: EventEmitter<any> = new EventEmitter;
+ edit: EventEmitter<Passenger> = new EventEmitter<Passenger>();
  
+ @Output()
+ view: EventEmitter<Passenger> = new EventEmitter<Passenger>();
  editMode: boolean = false
 
 constructor(){};
@@ -65,6 +71,10 @@ toggleEdit():void{
 }
 onRemove(){
 this.remove.emit(this.detail);
+}
+
+goToPassenger(){
+    this.view.emit(this.detail);
 }
 
 }
